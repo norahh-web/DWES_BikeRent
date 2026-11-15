@@ -1,3 +1,37 @@
+# BikeRentWeb
+
+Aplicación web de reserva de bicicletas en alquiler, desarrollada con Laravel,
+Sail (Docker), MySQL y phpMyAdmin. Incluye catálogo público, registro e inicio
+de sesión (Breeze), reservas y gestión de "Mis reservas".
+
+## Requisitos
+- Docker y Docker Compose
+- Usuario en el grupo `docker`
+- Puertos libres: 80, 5173, 8080, 3306, 6379, 7700, 8025, 1025
+
+## Instalación
+1. `git clone <url_repo>` y `git switch dev`
+2. `cp .env.example .env` y ajustar `WWWUSER` y `WWWGROUP` con el resultado de `id -u` e `id -g`
+3. Instalar dependencias de PHP y arrancar:
+   `./vendor/bin/sail up -d` (si `vendor/` no existe aún, hay que instalarlo antes con Composer en un contenedor temporal, según la guía de clase)
+4. `./vendor/bin/sail artisan key:generate`
+5. `./vendor/bin/sail artisan migrate:fresh --seed` (borra las tablas de la base local)
+6. `./vendor/bin/sail npm install`
+7. En otra terminal: `./vendor/bin/sail npm run dev`
+
+## URLs
+- Aplicación: http://localhost
+- phpMyAdmin: http://localhost:8080 (usuario `sail`, contraseña `password`)
+- Usuario de prueba: `test@example.com` / `password`
+
+## Día a día
+- Arrancar: `sail up -d` y `sail npm run dev`
+- Parar: `sail down`
+
+## Flujo de trabajo Git
+Ramas `feature/<nombre>` desde `dev`, Pull Request hacia `dev`, y revisión de
+las PR de los compañeros en las fases de equipo.
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
