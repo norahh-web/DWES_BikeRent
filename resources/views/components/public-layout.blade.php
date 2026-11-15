@@ -13,7 +13,7 @@
 
             <div class="flex items-center gap-4 text-sm">
                 @auth
-                    <span class="text-gray-600">{{ Auth::user()->name }}</span>
+                    <a href="{{ route('profile.edit') }}" class="text-gray-600 hover:underline">{{ Auth::user()->name }}</a>
                     <a href="{{ route('dashboard') }}" class="hover:underline">Panel</a>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
